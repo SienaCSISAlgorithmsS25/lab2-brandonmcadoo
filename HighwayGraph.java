@@ -222,5 +222,30 @@ public class HighwayGraph
         System.out.println(g);
 
 	// ADD CODE HERE TO COMPLETE LAB TASKS
+        Vertex north = g.vertices[0];
+        Vertex south = g.vertices[0];
+        Vertex east = g.vertices[0];
+        Vertex west = g.vertices[0];
+
+        for(int i = 1; i < g.vertices.length; i++) {
+            Vertex v = g.vertices[i];
+            if(v.point.lat > north.point.lat) {
+                north = v;
+            }
+            if(v.point.lat < south.point.lat) {
+                south = v;
+            }
+            if(v.point.lng > east.point.lng) {
+                east = v;
+            }
+            if(v.point.lng < west.point.lng) {
+                west = v;
+            }
+        }
+
+        System.out.println("Northernmost vertex: " + north.label + " at " + north.point);
+        System.out.println("Southernmost vertex: " + south.label + " at " + south.point);
+        System.out.println("Easternmost vertex: " + east.label + " at " + east.point);
+        System.out.println("Westernmost vertex: " + west.label + " at " + west.point);
     }
 }
